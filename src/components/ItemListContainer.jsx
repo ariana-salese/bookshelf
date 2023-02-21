@@ -3,7 +3,6 @@ import Welcome from './Welcome'
 import ItemList from './ItemList'
 import { data } from "../data";
 import { useParams } from "react-router-dom";
-import { Center, Heading, Spinner, transform } from '@chakra-ui/react';
 
 const ItemListContainer = ( { trending } ) => {
 	const { category } = useParams();

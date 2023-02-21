@@ -16,7 +16,6 @@ const App = () => {
 				<BrowserRouter>
 					<NavBar/>
 					<Routes>
-						{/* <Route exact path="/" element={<Welcome greeting = "Welcome to Bookshelf store"/>}/> */}
 						<Route exact path="/" element={<ItemListContainer trending={true} />}/>
 						<Route exact path="/catalogue" element={<ItemListContainer trending={false} />}/>
 						<Route exact path="/category/:category" element={<ItemListContainer/>}/>
