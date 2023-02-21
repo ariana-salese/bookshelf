@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Item from './Item';
+import ItemDetail from './ItemDetail';
 import { data } from "../data";
 import { Center } from '@chakra-ui/react';
 
-const ItemDetailContainer = () => {
-    const { id } = useParams();
+const ItemDetailContainer = ( ) => {
+    const { id} = useParams();
 	const [book, setBook] = useState([]);
 
 	const getData = () => {
@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
     return (
         <Center>
             {book.map((book) => (
-                <Item
+                <ItemDetail
                     key={book.id}
                     id={book.id}
                     name={book.name}

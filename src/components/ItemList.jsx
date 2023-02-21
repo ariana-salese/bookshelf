@@ -18,7 +18,6 @@ const ItemList = ( { books, title } ) => {
                             id={book.id}
                             name={book.name}
                             author={book.author}
-                            description={book.description}
                             price={book.price}
                             stock={book.stock}
                             category={book.category}

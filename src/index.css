@@ -11,6 +11,10 @@
   flex-wrap: wrap;
 }
 
-#spinner {
-  display: none;
+.size_transition {
+  transition: all .5s ease-in-out;
+}
+
+.size_transition:hover { 
+  transform: scale(1.05); 
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { FastAverageColor } from 'fast-average-color'
 import { StarIcon } from '@chakra-ui/icons'
 
-const Item = ({ id, name, author, description, price, stock, category, img, trending }) => {
+const Item = ({ id, name, author, price, stock, category, img, trending }) => {
     const [color, setColor] = useState([]);
 
     const calculateColor = () => {
@@ -33,7 +33,7 @@ const Item = ({ id, name, author, description, price, stock, category, img, tren
                         <Image src={img} height="15rem" boxShadow={'1px 1px 10px #000000'}></Image>
                     </Center>
                     <Box>
-                        {/* TODO crear componente para no repetir */}
+                        {/* TODO crear componente para no repetir o map*/}
                         <Text pt='2' fontSize='sm'>
                             <Highlight query={['Author']} styles={{fontWeight: 'bold' }}>
                                 {"Author " + author}
@@ -58,7 +58,7 @@ const Item = ({ id, name, author, description, price, stock, category, img, tren
                 </Stack>
                 <Center marginBlockStart={3}>
                     <Link to={`/item/${id}`}>
-                        <Button  _hover={{ bg: "gray.700" }} color="white" bgColor={color.hex}>Detail</Button>
+                        <Button  className="size_transition" _hover={{ bg: color.hex }} color="white" bgColor={"black"}>Detail</Button>
                     </Link>
                 </Center>
             </CardBody>
