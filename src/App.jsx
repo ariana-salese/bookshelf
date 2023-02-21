@@ -20,7 +20,7 @@ const App = () => {
 						<Route exact path="/" element={<ItemListContainer trending={true} />}/>
 						<Route exact path="/catalogue" element={<ItemListContainer trending={false} />}/>
 						<Route exact path="/category/:category" element={<ItemListContainer/>}/>
-						<Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
+						<Route exact path="/item/:id/:color/:isDark" element={<ItemDetailContainer/>}/>
 					</Routes>
 					<Footer/>
 				</BrowserRouter>

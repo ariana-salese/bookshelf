@@ -14,8 +14,15 @@ const Item = ({ id, name, author, price, stock, category, img, trending }) => {
 
     useEffect(() => {
 		calculateColor().then((color) => setColor(color));
-        console.log("color set")
   	}, []); 
+
+     const getDataAsText = (data, text) => {
+        return <Text pt='2' fontSize='sm'>
+                    <Highlight query={[text]} styles={{fontWeight: 'bold' }}>
+                        {text + ": " + data}
+                    </Highlight>
+                </Text>
+    }
     
     return (
         <Card width='20rem' boxShadow={'3px 3px 10px #7e7e7e'} my={2}>
@@ -33,32 +40,19 @@ const Item = ({ id, name, author, price, stock, category, img, trending }) => {
                         <Image src={img} height="15rem" boxShadow={'1px 1px 10px #000000'}></Image>
                     </Center>
                     <Box>
-                        {/* TODO crear componente para no repetir o map*/}
-                        <Text pt='2' fontSize='sm'>
-                            <Highlight query={['Author']} styles={{fontWeight: 'bold' }}>
-                                {"Author " + author}
-                            </Highlight>
-                        </Text>
-                        <Text pt='2' fontSize='sm'>
-                            <Highlight query={['Price']} styles={ {fontWeight: 'bold' }}>
-                                {"Price: $" + price}
-                            </Highlight>
-                        </Text>
-                        <Text pt='2' fontSize='sm'>
-                            <Highlight  query={['Stock']} styles={ {fontWeight: 'bold' }}>
-                                {"Stock: " + stock}
-                            </Highlight>
-                        </Text>
-                        <Text pt='2' fontSize='sm' >
-                            <Highlight query={['Genre']} styles={ {fontWeight: 'bold' }}>
-                                {"Genre: " + category}
-                            </Highlight>
-                        </Text>
+                        {
+                            [[author, "Author"], 
+                            [price, "Price"], 
+                            [stock, "Stock"], 
+                            [category, "Genre"]].map((data) => (
+                                getDataAsText(data[0], data[1])
+                            ))
+                        }
                     </Box>
                 </Stack>
                 <Center marginBlockStart={3}>
-                    <Link to={`/item/${id}`}>
-                        <Button  className="size_transition" _hover={{ bg: color.hex }} color="white" bgColor={"black"}>Detail</Button>
+                    <Link to={`/item/${id}/${String(color.hex).slice(1)}/${color.isDark}`}>
+                        <Button className="size_transition" _hover={{ bg: color.hex }} color="white" bgColor={"black"}>Detail</Button>
                     </Link>
                 </Center>
             </CardBody>

@@ -5,13 +5,15 @@ import { data } from "../data";
 import { Center } from '@chakra-ui/react';
 
 const ItemDetailContainer = ( ) => {
-    const { id} = useParams();
+    const { id, color, isDark } = useParams();
 	const [book, setBook] = useState([]);
 
 	const getData = () => {
 		return new Promise((resolve, reject) => {
+            if (data.length == 0) {
+                reject(console.log("No data was found"))
+            }
 			setTimeout(() => {
-                console.log("id es: " + id)
 				const book = data.filter((book) => book.id == id);
 				resolve(book)
 			}, 2000)
@@ -36,6 +38,8 @@ const ItemDetailContainer = ( ) => {
                     category={book.category}
                     img={book.img}
                     trending={book.trending}
+                    isDark={isDark}
+                    color={color}
                 />
             ))}
         </Center>

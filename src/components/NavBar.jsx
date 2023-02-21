@@ -16,6 +16,18 @@ import {
   } from '@chakra-ui/react'
 
 const NavBar = () => {
+
+	const categories = ['bussines', 'cookbooks', 'romance', 'fantasy', 
+						'fiction', 'history', 'horror', 'mystery', 'nonfiction',
+						'romance', 'science', 'science fiction', 'self help', 
+						'sports', 'thriller']
+
+	const getCategoryLink = (category) => {
+		return <Link to={`/category/${category}`}>
+					<MenuItem>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
+				</Link>
+	}
+
 	return (
 		<Box p={2} bg="black">
 			<Flex alignItems='center'>
@@ -24,7 +36,7 @@ const NavBar = () => {
 				</Link>
 				<Spacer/>
 				<Flex>
-					<Link to="/catalogue"> {/* TODO catalogue without welcome */}
+					<Link to="/catalogue">
 						<Button mx={3}>Catalogue</Button>
 					</Link>
 					<Spacer/>
@@ -33,32 +45,7 @@ const NavBar = () => {
 							Genres
 						</MenuButton>
 						<MenuList>
-							{/* TODO completar categorias */}
-							{/* <MenuItem>Business</MenuItem> */}
-							{/* <MenuItem>Cookbooks</MenuItem> */}
-							<Link to={`/category/${"fantasy"}`}>
-								<MenuItem>Fantasy</MenuItem>
-							</Link>
-							<Link to={`/category/${"fiction"}`}>
-								<MenuItem>Fiction</MenuItem>
-							</Link>
-							{/* <MenuItem>History</MenuItem>
-							<MenuItem>Horror</MenuItem> */}
-							<Link to={`/category/${"mystery"}`}>
-								<MenuItem>Mystery</MenuItem>
-							</Link>
-							{/* <MenuItem>Nonfiction</MenuItem>
-							<MenuItem>Poetry</MenuItem> */}
-							<Link to={`/category/${"romance"}`}>
-								<MenuItem>Romance</MenuItem>
-							</Link>
-							{/* <MenuItem>Science</MenuItem>
-							<MenuItem>Science Fiction</MenuItem>
-							<MenuItem>Self Help</MenuItem>
-							<MenuItem>Sports</MenuItem>*/}
-							<Link to={`/category/${"thiller"}`}>
-								<MenuItem>Thriller</MenuItem> 
-							</Link>
+							{categories.map((category) => (getCategoryLink(category)))}
 						</MenuList>
 					</Menu>
 					<Spacer/>
