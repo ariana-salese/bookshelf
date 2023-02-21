@@ -2,6 +2,7 @@ import React from 'react'
 import CartWidget from './CartWidget'
 import logo from '../assets/logo.svg'
 import { ChevronDownIcon } from '@chakra-ui/icons'
+import { Link } from "react-router-dom";
 import {
 	Menu,
 	MenuButton,
@@ -18,30 +19,46 @@ const NavBar = () => {
 	return (
 		<Box p={2} bg="black">
 			<Flex alignItems='center'>
-				<Image id="logo" mx={2} boxSize="9rem" src={logo} alt="Bookshelf's logo" />
+				<Link to="/">
+					<Image id="logo" mx={2} boxSize="9rem" src={logo} alt="Bookshelf's logo" />
+				</Link>
 				<Spacer/>
 				<Flex>
+					<Link to="/catalogue"> {/* TODO catalogue without welcome */}
+						<Button mx={3}>Catalogue</Button>
+					</Link>
+					<Spacer/>
 					<Menu>
 						<MenuButton as={Button} rightIcon={<ChevronDownIcon/>}>
 							Genres
 						</MenuButton>
 						<MenuList>
-							<MenuItem>Business</MenuItem>
-							<MenuItem>Children's</MenuItem>
-							<MenuItem>Cookbooks</MenuItem>
-							<MenuItem>Fantasy</MenuItem>
-							<MenuItem>Fiction</MenuItem>
-							<MenuItem>History</MenuItem>
-							<MenuItem>Horror</MenuItem>
-							<MenuItem>Mystery</MenuItem>
-							<MenuItem>Nonfiction</MenuItem>
-							<MenuItem>Poetry</MenuItem>
-							<MenuItem>Romance</MenuItem>
-							<MenuItem>Science</MenuItem>
+							{/* TODO completar categorias */}
+							{/* <MenuItem>Business</MenuItem> */}
+							{/* <MenuItem>Cookbooks</MenuItem> */}
+							<Link to={`/category/${"fantasy"}`}>
+								<MenuItem>Fantasy</MenuItem>
+							</Link>
+							<Link to={`/category/${"fiction"}`}>
+								<MenuItem>Fiction</MenuItem>
+							</Link>
+							{/* <MenuItem>History</MenuItem>
+							<MenuItem>Horror</MenuItem> */}
+							<Link to={`/category/${"mystery"}`}>
+								<MenuItem>Mystery</MenuItem>
+							</Link>
+							{/* <MenuItem>Nonfiction</MenuItem>
+							<MenuItem>Poetry</MenuItem> */}
+							<Link to={`/category/${"romance"}`}>
+								<MenuItem>Romance</MenuItem>
+							</Link>
+							{/* <MenuItem>Science</MenuItem>
 							<MenuItem>Science Fiction</MenuItem>
 							<MenuItem>Self Help</MenuItem>
-							<MenuItem>Sports</MenuItem>
-							<MenuItem>Thriller</MenuItem>
+							<MenuItem>Sports</MenuItem>*/}
+							<Link to={`/category/${"thiller"}`}>
+								<MenuItem>Thriller</MenuItem> 
+							</Link>
 						</MenuList>
 					</Menu>
 					<Spacer/>

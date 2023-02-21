@@ -1,3 +1,16 @@
+#app {
+  background-color: black;
+}
+
 #logo {
   filter: drop-shadow(2px 2px 10px #a4a4a4);
+}
+
+.catalogue{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#spinner {
+  display: none;
 }
