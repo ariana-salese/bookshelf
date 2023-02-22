@@ -18,10 +18,9 @@ const ItemList = ( { books, title } ) => {
                 </Center>
                 : 
                <Wrap spacing='2.5rem' justify='center'>
-                    {books.map((book) => (
-                        <WrapItem>
+                    {books.map((book, i) => (
+                        <WrapItem key={i}>
                             <Item
-                                key={book.id}
                                 id={book.id}
                                 name={book.name}
                                 author={book.author}

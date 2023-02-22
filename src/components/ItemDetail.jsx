@@ -5,8 +5,8 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ( { id, name, author, price, description, stock, category, img, trending, isDark, color} ) => {
 
-    const getDataAsText = (data, text) => {
-        return <Text pt='2' fontSize='md'>
+    const getDataAsText = (data, text, i) => {
+        return <Text key={i} pt='2' fontSize='md'>
                     <Highlight query={[text]} styles={{fontWeight: 'bold' }}>
                         {text + ": " + data}
                     </Highlight>
@@ -22,7 +22,7 @@ const ItemDetail = ( { id, name, author, price, description, stock, category, im
                             <Heading>
                                 {name}
                             </Heading>
-                            {trending ? <Text color={isDark ? "#" + color : "black"}><StarIcon></StarIcon>Trending book!</Text> : <></>}
+                            {trending ? <Text color={isDark =="true" ? "#" + color : "black"}><StarIcon></StarIcon>Trending book!</Text> : <></>}
                         </CardHeader>
                         <Center>
                             <Image src={img} height="20rem" boxShadow={'1px 1px 10px #000000'}></Image>
@@ -32,8 +32,8 @@ const ItemDetail = ( { id, name, author, price, description, stock, category, im
                                 [[author, "Author"], 
                                 [price, "Price"], 
                                 [stock, "Stock"], 
-                                [category, "Genre"]].map((data) => (
-                                    getDataAsText(data[0], data[1])
+                                [category, "Genre"]].map((data, i) => (
+                                    getDataAsText(data[0], data[1], i)
                                 ))
                             }
                         </Box>

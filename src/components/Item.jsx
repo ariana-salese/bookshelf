@@ -16,8 +16,8 @@ const Item = ({ id, name, author, price, stock, category, img, trending }) => {
 		calculateColor().then((color) => setColor(color));
   	}, []); 
 
-     const getDataAsText = (data, text) => {
-        return <Text pt='2' fontSize='sm'>
+     const getDataAsText = (data, text, i) => {
+        return <Text key={i} pt='2' fontSize='sm'>
                     <Highlight query={[text]} styles={{fontWeight: 'bold' }}>
                         {text + ": " + data}
                     </Highlight>
@@ -44,15 +44,15 @@ const Item = ({ id, name, author, price, stock, category, img, trending }) => {
                             [[author, "Author"], 
                             [price, "Price"], 
                             [stock, "Stock"], 
-                            [category, "Genre"]].map((data) => (
-                                getDataAsText(data[0], data[1])
+                            [category, "Genre"]].map((data, i) => (
+                                getDataAsText(data[0], data[1], i)
                             ))
                         }
                     </Box>
                 </Stack>
                 <Center marginBlockStart={3}>
                     <Link to={`/item/${id}/${String(color.hex).slice(1)}/${color.isDark}`}>
-                        <Button className="size_transition" _hover={{ bg: color.hex }} color="white" bgColor={"black"}>Detail</Button>
+                        <Button className="size_transition" boxShadow={'1px 1px 8px gray'} _hover={{ bg: color.hex, color: color.isDark ? "white" : "black" }} color="white" bgColor={"black"}>Detail</Button>
                     </Link>
                 </Center>
             </CardBody>

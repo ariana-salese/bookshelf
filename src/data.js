@@ -6,6 +6,19 @@ import img5 from "./assets/books/fiction/promise_boys.jpg"
 import img6 from "./assets/books/fiction/the_survivalist.jpg"
 import img7 from "./assets/books/fiction/this_is_not_a_personal_statement.jpg"
 import img8 from "./assets/books/fiction/token.jpg"
+import img9 from "./assets/books/bussines/building_a_second_brain.jpg"
+import img10 from "./assets/books/bussines/limitless.jpg"
+import img11 from "./assets/books/bussines/master_your_emotions.jpg"
+import img12 from "./assets/books/bussines/the_book_of_boundaries.jpg"
+import img13 from "./assets/books/mystery/death_comes_to_marlow.jpg"
+import img14 from "./assets/books/mystery/feel_the_bern.jpg"
+import img15 from "./assets/books/mystery/retro.jpg"
+import img16 from "./assets/books/mystery/the_black_queen.jpg"
+import img17 from "./assets/books/mystery/what_happend_to_rachel_riley.jpg"
+import img18 from "./assets/books/thriller/head_cleaner.jpg"
+import img19 from "./assets/books/thriller/liar_dreamer_thief.jpg"
+import img20 from "./assets/books/thriller/the_library_suicides.jpg"
+import img21 from "./assets/books/thriller/the_thing_in_the_snow.jpg"
 
 export const data = [
     {
@@ -103,5 +116,149 @@ export const data = [
         "category": "Fiction",
         "trending": true,
         "img": img8
+      },
+      {
+        "id": 9,
+        "name": "Building a secon brain",
+        "author": "Tiago Fort",
+        "price": 6000,
+        "description":
+          "TODO",
+        "stock": 11,
+        "category": "Bussines",
+        "trending": true,
+        "img": img9
+      },
+      {
+        "id": 10,
+        "name": "Limitless",
+        "author": "Jim Kwik",
+        "price": 5100,
+        "description":
+          "TODO",
+        "stock": 6,
+        "category": "Bussines",
+        "trending": false,
+        "img": img10
+      },
+      {
+        "id": 12,
+        "name": "The book of boundaries",
+        "author": "Melisa Urban",
+        "price": 4300,
+        "description":
+          "TODO",
+        "stock": 5,
+        "category": "Bussines",
+        "trending": false,
+        "img": img12
+      },
+      {
+        "id": 13,
+        "name": "Death comes to Marlow",
+        "author": "Robert Thorogood",
+        "price": 4100,
+        "description":
+          "TODO",
+        "stock": 13,
+        "category": "Mystery",
+        "trending": false,
+        "img": img13
+      },
+      {
+        "id": 14,
+        "name": "Feel the Bern",
+        "author": "Andrew Shaffer",
+        "price": 5100,
+        "description":
+          "TODO",
+        "stock": 2,
+        "category": "Mystery",
+        "trending": false,
+        "img": img14
+      },
+      {
+        "id": 15,
+        "name": "Retro",
+        "author": "Sofia Lapuente",
+        "price": 4500,
+        "description":
+          "TODO",
+        "stock": 9,
+        "category": "Mystery",
+        "trending": false,
+        "img": img15
+      },
+      {
+        "id": 16,
+        "name": "The Black Queen",
+        "author": "Jumata Emill",
+        "price": 6300,
+        "description":
+          "TODO",
+        "stock": 10,
+        "category": "Mystery",
+        "trending": true,
+        "img": img16
+      },
+      {
+        "id": 17,
+        "name": "What happened to Rachel Riley?",
+        "author": "Claire Swinarski",
+        "price": 4300,
+        "description":
+          "TODO",
+        "stock": 5,
+        "category": "Mystery",
+        "trending": true,
+        "img": img17
+      },
+      {
+        "id": 18,
+        "name": "Head cleaner",
+        "author": "David James Keaton",
+        "price": 5000,
+        "description":
+          "TODO",
+        "stock": 23,
+        "category": "Thriller",
+        "trending": true,
+        "img": img18
+      },
+      {
+        "id": 19,
+        "name": "Liar, Dreamer, Thief",
+        "author": "Maria Dong",
+        "price": 3400,
+        "description":
+          "TODO",
+        "stock": 3,
+        "category": "Thriller",
+        "trending": false,
+        "img": img19
+      },
+      {
+        "id": 20,
+        "name": "The library suicides",
+        "author": "Fflur Dafydd",
+        "price": 5000,
+        "description":
+          "TODO",
+        "stock": 23,
+        "category": "Thriller",
+        "trending": false,
+        "img": img20
+      },
+      {
+        "id": 21,
+        "name": "The thing in the snow",
+        "author": "Sean Adams",
+        "price": 5100,
+        "description":
+          "TODO",
+        "stock": 2,
+        "category": "Thriller",
+        "trending": false,
+        "img": img21
       }
   ]

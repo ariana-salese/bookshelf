@@ -17,13 +17,18 @@ import {
 
 const NavBar = () => {
 
-	const categories = ['bussines', 'cookbooks', 'romance', 'fantasy', 
-						'fiction', 'history', 'horror', 'mystery', 'nonfiction',
-						'romance', 'science', 'science fiction', 'self help', 
-						'sports', 'thriller']
+	// TODO 
+	// const categories = ['bussines', 'cookbooks', 'romance', 'fantasy', 
+	// 					'fiction', 'history', 'horror', 'mystery', 'nonfiction',
+	// 					'romance', 'science', 'science fiction', 'self help', 
+	// 					'sports', 'thriller']
 
-	const getCategoryLink = (category) => {
-		return <Link to={`/category/${category}`}>
+	const categories = ['bussines',  'fantasy', 
+						'fiction', 'mystery', 
+						'nonfiction', 'thriller']
+
+	const getCategoryLink = (category, i) => {
+		return <Link key={i} to={`/category/${category}`}>
 					<MenuItem>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
 				</Link>
 	}
@@ -45,7 +50,7 @@ const NavBar = () => {
 							Genres
 						</MenuButton>
 						<MenuList>
-							{categories.map((category) => (getCategoryLink(category)))}
+							{categories.map((category, i) => (getCategoryLink(category, i)))}
 						</MenuList>
 					</Menu>
 					<Spacer/>
