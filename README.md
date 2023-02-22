@@ -6,10 +6,15 @@ This page is an ecommerce for selling books.
 
 ## Tools
 
-The tools being used are:
+This [ReactJs](https://reactjs.org/) project was created with [Vite](https://vitejs.dev/).
 
-- [ReactJs](https://reactjs.org/)
-- [chakra-ui](https://chakra-ui.com/)
+- To simplify the design of the page, the library being used is [chakra-ui](https://chakra-ui.com/).
+
+- To extract the dominant color of the book covers the package being used is [fast-average-color](https://www.npmjs.com/package/fast-average-color).
+
+- The books, images and the descriptions are from [GoodReads](https://www.goodreads.com/)
+
+- Some assests were created with Illustrator
 
 ## Run locally
 
@@ -19,4 +24,8 @@ Clone the repository and run:
 npm install
 npm run dev
 ```
+
+## Deployments
+
+- [Github pages deployment](https://ariana-salese.github.io/bookshelf/)
 
