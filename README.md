@@ -25,7 +25,3 @@ npm install
 npm run dev
 ```
 
-## Deployments
-
-- [Github pages deployment](https://ariana-salese.github.io/bookshelf/)
-
