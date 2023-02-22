@@ -4,6 +4,10 @@
 
 This page is an ecommerce for selling books.
 
+Navigation gif:
+
+![bookshelf_gif_comp](https://user-images.githubusercontent.com/71737227/220785699-b0a29af2-8d58-4a08-b61d-a37c13da5794.gif)
+
 ## Tools
 
 This [ReactJs](https://reactjs.org/) project was created with [Vite](https://vitejs.dev/).
