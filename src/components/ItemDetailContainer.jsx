@@ -5,7 +5,7 @@ import { data } from "../data";
 import { Center } from '@chakra-ui/react';
 
 const ItemDetailContainer = ( ) => {
-    const { id, color, isDark } = useParams();
+    const { itemId, color, isDark } = useParams();
 	const [book, setBook] = useState([]);
 
 	const getData = () => {
@@ -14,7 +14,7 @@ const ItemDetailContainer = ( ) => {
                 reject(console.log("No data was found"))
             }
 			setTimeout(() => {
-				const book = data.filter((book) => book.id == id);
+				const book = data.filter((book) => book.id == itemId);
 				resolve(book)
 			}, 2000)
 		});

@@ -23,13 +23,13 @@ const NavBar = () => {
 	// 					'romance', 'science', 'science fiction', 'self help', 
 	// 					'sports', 'thriller']
 
-	const categories = ['bussines',  'fantasy', 
-						'fiction', 'mystery', 
-						'nonfiction', 'thriller']
+	const categories = [{name: 'bussines', id: '3'},  {name: 'fantasy', id: '1'}, 
+						{name: 'fiction', id: '2'}, {name: 'mystery', id: '4'}, 
+						{name: 'nonfiction', id: '6'}, {name: 'thriller', id: '5'}]
 
 	const getCategoryLink = (category, i) => {
-		return <Link key={i} to={`/category/${category}`}>
-					<MenuItem>{category.charAt(0).toUpperCase() + category.slice(1)}</MenuItem>
+		return <Link key={i} to={`/category/${category.id}`}>
+					<MenuItem>{category.name.charAt(0).toUpperCase() + category.name.slice(1)}</MenuItem>
 				</Link>
 	}
 
