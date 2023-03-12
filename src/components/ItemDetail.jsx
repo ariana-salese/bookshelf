@@ -22,7 +22,7 @@ const ItemDetail = ( { book, averageBookCoverColorIsDark, averageBookCoverColorC
     }
 
     return (
-        <Center height={'100vh'} m={5}>
+        <Center m={5}>
             <Card  className="main_card">
                 <CardBody width={'90vw'}>
                     <HStack divider={<StackDivider />} spacing='4'>

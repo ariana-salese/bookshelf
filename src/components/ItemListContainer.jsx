@@ -3,26 +3,26 @@ import Notice from './Welcome'
 import ItemList from './ItemList'
 import { data } from "../data";
 import { useParams } from "react-router-dom";
+import Loading from './Loader';
 
 const ItemListContainer = ( { trending } ) => {
 	const { categoryId } = useParams();
 	const [books, setBooks] = useState([]);
-
-	const getData = () => {
-		return new Promise((resolve, reject) => {
-			if (data.length == 0) {
-                reject(console.log("No data was found"))
-            }
-			setTimeout(() => {
-				resolve(categoryId ?  data.filter((book) => book.categoryId === categoryId) : trending ? data.filter((book) => book.trending) : data)
-			}, 0)
-		});
-	};
+	const [loading, setLoading] = useState(true);
 	
 	useEffect(() => {
-		getData().then((books) => setBooks(books));
+		setLoading(true)
+		setTimeout(() => {
+			const books = categoryId ?  data.filter((book) => book.categoryId === categoryId) : trending ? data.filter((book) => book.trending) : data;
+			setBooks(books);
+			setLoading(false);
+		}, 2000)
   	}, [categoryId, trending]); 
 
+	if (loading) {
+		console.log('LOADING')
+		return <Loading loading={'Loading books'}/>
+	}
 	return (
 		<>
 			{trending && <Notice note={"Welcome to the bookshelf store"}/>}
