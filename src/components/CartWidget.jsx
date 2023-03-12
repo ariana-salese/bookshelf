@@ -1,14 +1,16 @@
-import { Button, Box } from '@chakra-ui/react'
+import { Button, Text} from '@chakra-ui/react'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const CartWidget = () => {
+const CartWidget = ({bookCount}) => {
     return (
-        <Box>
-            <Button>
-                <span>8</span>
-                <span class="material-symbols-outlined">shopping_cart</span>
-            </Button> 
-        </Box>
+            <Link to="/checkout">
+                <Button>
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <Text>{bookCount}</Text>
+                </Button> 
+            </Link>
+            
     )
 }
 

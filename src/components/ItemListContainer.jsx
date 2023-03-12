@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Welcome from './Welcome'
+import Notice from './Welcome'
 import ItemList from './ItemList'
 import { data } from "../data";
 import { useParams } from "react-router-dom";
@@ -15,7 +15,7 @@ const ItemListContainer = ( { trending } ) => {
             }
 			setTimeout(() => {
 				resolve(categoryId ?  data.filter((book) => book.categoryId === categoryId) : trending ? data.filter((book) => book.trending) : data)
-			}, 2000)
+			}, 0)
 		});
 	};
 	
@@ -25,7 +25,7 @@ const ItemListContainer = ( { trending } ) => {
 
 	return (
 		<>
-			{trending ? <Welcome greeting={"Welcome to the bookshelf store"}/> : <></>}
+			{trending && <Notice note={"Welcome to the bookshelf store"}/>}
 			<ItemList books={books} title={trending ? "Trending" : "Catalogue"}/>
 		</>
   	);

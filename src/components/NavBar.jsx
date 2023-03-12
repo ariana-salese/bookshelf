@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CartWidget from './CartWidget'
+import { CartContext } from '../context/cartContext'
 import logo from '../assets/logo.svg'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Link } from "react-router-dom";
@@ -22,6 +23,8 @@ const NavBar = () => {
 	// 					'fiction', 'history', 'horror', 'mystery', 'nonfiction',
 	// 					'romance', 'science', 'science fiction', 'self help', 
 	// 					'sports', 'thriller']
+
+	const { books, bookCount, addBooks, removeBooks, } = useContext(CartContext); //TODO necesito todo?
 
 	const categories = [{name: 'bussines', id: '3'},  {name: 'fantasy', id: '1'}, 
 						{name: 'fiction', id: '2'}, {name: 'mystery', id: '4'}, 
@@ -55,7 +58,7 @@ const NavBar = () => {
 					</Menu>
 					<Spacer/>
 					<Box mx={3}>
-						<CartWidget/>
+						<CartWidget bookCount={bookCount}/>
 					</Box>
 				</Flex>
 			</Flex>

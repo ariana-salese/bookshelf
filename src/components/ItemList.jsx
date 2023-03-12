@@ -21,14 +21,7 @@ const ItemList = ( { books, title } ) => {
                     {books.map((book, i) => (
                         <WrapItem key={i}>
                             <Item
-                                id={book.id}
-                                name={book.name}
-                                author={book.author}
-                                price={book.price}
-                                stock={book.stock}
-                                category={book.category}
-                                img={book.img}
-                                trending={book.trending}
+                                book={book}
                             />
                         </WrapItem>
                     ))}  

@@ -16,7 +16,7 @@ const ItemDetailContainer = ( ) => {
 			setTimeout(() => {
 				const book = data.filter((book) => book.id == itemId);
 				resolve(book)
-			}, 2000)
+			}, 0)
 		});
 	};
 	
@@ -29,17 +29,9 @@ const ItemDetailContainer = ( ) => {
             {book.map((book) => (
                 <ItemDetail
                     key={book.id}
-                    id={book.id}
-                    name={book.name}
-                    author={book.author}
-                    description={book.description}
-                    price={book.price}
-                    stock={book.stock}
-                    category={book.category}
-                    img={book.img}
-                    trending={book.trending}
-                    isDark={isDark}
-                    color={color}
+                    book={book}
+                    averageBookCoverColorIsDark={isDark}
+                    averageBookCoverColorCode={color}
                 />
             ))}
         </Center>
