@@ -4,9 +4,9 @@
 
 This page is an ecommerce for selling books.
 
-Navigation gif:
+## Deployment
 
-![bookshelf_gif_comp](https://user-images.githubusercontent.com/71737227/220785699-b0a29af2-8d58-4a08-b61d-a37c13da5794.gif)
+To visit the site access this [link](https://main--bookshelf-ariana-salese.netlify.app/)
 
 ## Tools
 
