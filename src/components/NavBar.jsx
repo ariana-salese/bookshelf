@@ -1,34 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import CartWidget from './CartWidget'
-import { CartContext } from '../context/cartContext'
 import logo from '../assets/logo.svg'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Link } from "react-router-dom";
-import {
-	Menu,
-	MenuButton,
-	MenuList,
-	MenuItem,
-	Button,
-	Box,
-	Image,
-	Flex,
-	Spacer
-  } from '@chakra-ui/react'
+import {Menu, MenuButton, MenuList, MenuItem, Button, Box, Image, Flex, Spacer} from '@chakra-ui/react'
 
+//deshabilitar carrito si no tengo nada TODO BUSINESS
 const NavBar = () => {
-
-	// TODO 
+	//TODO
 	// const categories = ['bussines', 'cookbooks', 'romance', 'fantasy', 
 	// 					'fiction', 'history', 'horror', 'mystery', 'nonfiction',
 	// 					'romance', 'science', 'science fiction', 'self help', 
 	// 					'sports', 'thriller']
 
-	const { books, bookCount, addBooks, removeBooks, } = useContext(CartContext); //TODO necesito todo?
-
 	const categories = [{name: 'bussines', id: '3'},  {name: 'fantasy', id: '1'}, 
 						{name: 'fiction', id: '2'}, {name: 'mystery', id: '4'}, 
-						{name: 'nonfiction', id: '6'}, {name: 'thriller', id: '5'}]
+						{name: 'nonfiction', id: '6'}, {name: 'thriller', id: '5'}, 
+						{name: 'romance', id: '7'}]
 
 	const getCategoryLink = (category, i) => {
 		return <Link key={i} to={`/category/${category.id}`}>
@@ -58,7 +46,7 @@ const NavBar = () => {
 					</Menu>
 					<Spacer/>
 					<Box mx={3}>
-						<CartWidget bookCount={bookCount}/>
+						<CartWidget/>
 					</Box>
 				</Flex>
 			</Flex>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 
-export const CartContext = createContext();
+export const CartContext = createContext(null);
 
 {
 	/* TODO
@@ -21,91 +21,29 @@ export const CartContext = createContext();
 	*/
 }
 
+/**
+ * TODO
+ * @param {*} param0 
+ * @returns 
+ */
 export const CartProvider = ({ children }) => {
-	const [bookCount, setBookCount] = useState(0)
 	const [books, setBooks] = useState({});
 
 	/**
-	 * Adds the specified quantity of the given book and updates book count.
-	 * 
-	 * @param {Object} data
-	 * For example: {"id": 2,
-					"name": "Spice road",
-					"author": "Maiya Ibrahim",
-					"price": 3000,
-					"description":
-						"The first book in an epic fantasy [...]",
-					"stock": 10,
-					"category": "Fantasy",
-					"categoryId": "1",
-					"trending": false,
-					"img": img}
-		@param {number} count
-		@param {number} averageBookCoverColorCode
-		@param {boolean} averageBookCoverColorIsDark
+	 * TODO
 	 */
-	const addBooks = (data, count, averageBookCoverColorCode, averageBookCoverColorIsDark) => { 
+	const bookCount = () => {
+		let count = 0;
 
-		const bookData = books[data.id] || {data: data, count: 0, averageBookCoverColorCode: averageBookCoverColorCode, averageBookCoverColorIsDark: averageBookCoverColorIsDark}
-		bookData.count = bookData.count + count;
-		books[data.id] = bookData;
-		
-		setBooks(books);
-		setBookCount(bookCount + count);
-	}
+		Object.values(books).forEach(book => {
+			count += book.count
+		});
 
-	/**
-	 * Increases by one the current quantity of the book with the given id and
-	 * updates book count
-	 * 
-	 * @param {number} id
-	 */
-	const addBook = (id) => {
-		if (!(id in books)) { return }
-
-		books[id].count = books[id].count + 1;
-		setBooks(books);
-		setBookCount(bookCount + 1);
-	}
-
-	/**
-	 * Decreases by one the current quantity of the book with the given id and
-	 * updates book count
-	 * 
-	 * @param {number} id
-	 */
-	const removeBook = (id) => {
-		if (!(id in books)) { return }
-
-		books[id].count = books[id].count - 1;
-		if (books[id].count == 0) { books.delete(id) }
-		setBooks(books);
-		setBookCount(bookCount - 1);
-	}
-
-	/**
-	 * Deletes the book with the given id and updates book count.
-	 * 
-	 * @param {number} id
-	 */
-	const deleteBook = (id) => {
-		if (!(id in books)) { return }
-		const countToDelete = books[id].count;
-		delete books[id];
-		setBooks(books);
-		setBookCount(bookCount - countToDelete);
-	}
-
-	/**
-	 * Clears cart (removes all books) and sets count to 0
-	 */
-	const clear = () => {
-		setBooks({});
-		setBookCount(0)
-	}
+		return count
+	}	
 
 	return (
-		<CartContext.Provider value={{books, bookCount, addBooks, addBook, removeBook, deleteBook, clear}}>
+		<CartContext.Provider value={{books, setBooks, bookCount}}>
 			{children}
 		</CartContext.Provider>
 	)

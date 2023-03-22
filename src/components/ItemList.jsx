@@ -1,36 +1,52 @@
-import { Center, Container, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import { Center, Heading, Wrap, WrapItem } from '@chakra-ui/react'
 import Item from './Item'
 import React from 'react'
-import bookshelf from '../assets/bookshelf.svg'
+import Notice from './Notice'
 
-const ItemList = ( { books, title } ) => {
+/**
+ * Renders all given books and their data under the specified title
+ * 
+ * @param {Array<Object>} books 
+ * @example
+ * [{
+ *  "id": 2,
+ * 	"name": "Spice road",
+ * 	"author": "Maiya Ibrahim",
+ * 	"price": 3000,
+ * 	"description":
+ * 	"The first book in an epic fantasy [...]",
+ * 	"stock": 10,
+ * 	"category": "Fantasy",
+ * 	"categoryId": "1",
+ * 	"trending": false,
+ * 	"img": img
+ * }, ...]
+ * 
+ * @param {string} listTitle
+ * @returns Item list of all books
+ */
+const ItemList = ( { books, listTitle } ) => {
      return (
         <div>
             <Center>
                 <Heading m={3} color="white">
-                    {title}
+                    {listTitle}
                 </Heading>
             </Center>
             {   
                 books.length == 0 ? 
-                <Center height={'65vh'} bgImage={bookshelf}>
-                    <Text color={'white'} fontSize='5xl' fontWeight={'bold'}>Sorry! There are no books available</Text>
-                </Center>
+                <Notice note='Sorry! There are no books available'/>
                 : 
-               <Wrap spacing='2.5rem' justify='center'>
+                <Wrap spacing='2.5rem' justify='center'>
                     {books.map((book, i) => (
                         <WrapItem key={i}>
-                            <Item
-                                book={book}
-                            />
+                            <Item book={book} bookId={book.id}/>
                         </WrapItem>
                     ))}  
                 </Wrap>  
             }
-            
         </div>
-        
-  )
+    )
 }
 
 export default ItemList
