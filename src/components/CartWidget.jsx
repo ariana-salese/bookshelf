@@ -1,7 +1,7 @@
 import { Button, Text, Tooltip} from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { CartContext } from '../context/cartContext';
+import { CartProvider } from './context/CartContext'
 
 /**
  * Renders a button to access cart

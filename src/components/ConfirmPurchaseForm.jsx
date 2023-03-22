@@ -3,7 +3,7 @@ import { collection, getFirestore, addDoc } from 'firebase/firestore'
 import { useState } from 'react';
 import { Button, Center, Flex, FormControl, FormLabel, Input, Box, DrawerFooter, DrawerBody, Textarea, Drawer, DrawerContent, DrawerHeader, DrawerOverlay, Text, Tooltip } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../context/cartContext';
+import { CartProvider } from './context/CartContext'
 
 /**
  * Form to confirm purchase. Once confirmed updates database
