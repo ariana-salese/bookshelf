@@ -3,24 +3,35 @@ import { Box, Card, CardBody, CardHeader, Center, Container, Heading, Highlight,
 import React from 'react'
 import ItemCount from './ItemCount'
 
+/**
+ * Large card that shows the details of the book received and the
+ * necessary buttons to add the desired quantity to the cart
+ * 
+ * @param {Object} book 
+ * @example 
+ * {
+ * 	"id": 2,
+ * 	"name": "Spice road",
+ * 	"author": "Maiya Ibrahim",
+ * 	"price": 3000,
+ * 	"description":
+ * 	"The first book in an epic fantasy [...]",
+ * 	"stock": 10,
+ * 	"category": "Fantasy",
+ * 	"categoryId": "1",
+ * 	"trending": false,
+ * 	"img": img
+ * }
+ * 
+ * @param {string} averageBookCoverColorIsDark
+ * @example 'true', for a dark color
+ * 
+ * @param {string} averageBookCoverColorCode
+ * @example 'e6e6e6', for hex code '#e6e6e6'
+ * 
+ * @returns specified book details
+ */
 const ItemDetail = ( { book, averageBookCoverColorIsDark, averageBookCoverColorCode } ) => {
-
-    /**
-     * Returns data given as a text component
-     * 
-     * @param {string} data 
-     * @param {string} text 
-     * @param {number} i 
-     * @returns Text component: text + data, with text in bold
-     */
-    const getDataAsText = (data, text, i) => {
-        return <Text key={i} pt='2' fontSize='md'>
-                    <Highlight query={[text]} styles={{fontWeight: 'bold' }}>
-                        {text + data}
-                    </Highlight>
-                </Text>
-    }
-
     return (
         <Center m={5}>
             <Card  className="main_card">
@@ -31,7 +42,7 @@ const ItemDetail = ( { book, averageBookCoverColorIsDark, averageBookCoverColorC
                                 <Heading>
                                     {book.name}
                                 </Heading>
-                                {book.trending && <Text color={averageBookCoverColorIsDark =="true" ? "#" + averageBookCoverColorCode : "black"}><StarIcon></StarIcon>Trending book!</Text>}
+                                {book.trending && <Text color={averageBookCoverColorIsDark == "true" ? "#" + averageBookCoverColorCode : "black"}><StarIcon></StarIcon>Trending book!</Text>}
                             </CardHeader>
                             <Center>
                                 <Image src={book.img} height="20rem" boxShadow={'1px 1px 10px #000000'}></Image>
@@ -42,7 +53,11 @@ const ItemDetail = ( { book, averageBookCoverColorIsDark, averageBookCoverColorC
                                     [book.price, "Price: $"], 
                                     [book.stock, "Stock: "], 
                                     [book.category, "Genre: "]].map((data, i) => (
-                                        getDataAsText(data[0], data[1], i)
+                                        <Text key={i} pt='2' fontSize='md'>
+                                            <Highlight query={[data[1]]} styles={{fontWeight: 'bold' }}>
+                                                {data[1] + data[0]}
+                                            </Highlight>
+                                        </Text>
                                     ))
                                 }
                             </Box>

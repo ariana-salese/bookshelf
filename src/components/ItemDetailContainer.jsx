@@ -1,49 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
-import { data } from "../data";
 import { Center } from '@chakra-ui/react';
-import Loading from './Loader';
+import Loader from './Loader';
+import {doc, getDoc, getFirestore} from "firebase/firestore"
+import Notice from './Notice';
 
-const ItemDetailContainer = ( ) => {
+/**
+ * Accesses the database to find the book with the id specified in
+ * the url. If it finds it, it shows all its information with an ItemDetail.
+ * Otherwise, it notifies that the book does not exist with Notice
+ * 
+ * @returns specified book details
+ */
+const ItemDetailContainer = () => {
     const { itemId, color, isDark } = useParams();
-	const [book, setBook] = useState([]);
-    const [loading, setLoading] = useState(true);
+	const [book, setBook] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-	// const getData = () => {
-	// 	return new Promise((resolve, reject) => {
-    //         if (data.length == 0) {
-    //             reject(console.log("No data was found"))
-    //         }
-	// 		setTimeout(() => {
-	// 			const book = data.filter((book) => book.id == itemId);
-	// 			resolve(book)
-	// 		}, 0)
-	// 	});
-	// };
-
+    /**
+     * Accesses the database to find the book with the id specified in
+     * the url
+     */
     useEffect(() => {
-		setLoading(true)
-		setTimeout(() => {
-			const book = data.filter((book) => book.id == itemId);
-			setBook(book)
-			setLoading(false);
-		}, 2000)
+        setLoading(true)
+        const db = getFirestore();
+        const item = doc(db, "books", itemId);
+        getDoc(item).then((snapshot) => {
+            if (snapshot.exists()) {
+                const book = snapshot.data();
+				book.id = itemId
+                setBook(book)
+            } 
+            setLoading(false)
+        })
   	}, []); 
 
 	if (loading) {  
-		return <Loading loading={'Loading book data'}/>
+		return <Loader note={'Loading book data'}/>
+    }
+    if (!book) {
+        return <Notice note="The book you are looking for doesn't exists!"></Notice>
     }
     return (
         <Center>
-            {book.map((book) => (
-                <ItemDetail
-                    key={book.id}
-                    book={book}
-                    averageBookCoverColorIsDark={isDark}
-                    averageBookCoverColorCode={color}
-                />
-            ))}
+            <ItemDetail
+                key={itemId}
+                book={book}
+                bookId={itemId}
+                averageBookCoverColorIsDark={isDark}
+                averageBookCoverColorCode={color}
+            />
         </Center>
     )
 }

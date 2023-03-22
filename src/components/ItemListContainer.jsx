@@ -1,33 +1,78 @@
 import React, { useState, useEffect } from 'react'
-import Notice from './Welcome'
+import Notice from './Notice'
 import ItemList from './ItemList'
-import { data } from "../data";
 import { useParams } from "react-router-dom";
-import Loading from './Loader';
+import Loader from './Loader';
+import {collection, getDocs, getFirestore} from "firebase/firestore"
+import { Box } from '@chakra-ui/react';
 
+/**
+ * Shows all books available in the database filtered by category id or trending
+ * condition if specified.
+ * 
+ * @param {boolean} trending 
+ * 
+ * @returns book list with its data
+ */
 const ItemListContainer = ( { trending } ) => {
 	const { categoryId } = useParams();
 	const [books, setBooks] = useState([]);
-	const [loading, setLoading] = useState(true);
-	
-	useEffect(() => {
+	const [loading, setLoading] = useState(false);
+	const [categoryName, setCategoryName] = useState(null);
+
+	/**
+	 * Recives all the books available in the database and filters them. If a 
+	 * category id was given through the url then it returns only the books 
+	 * from that category. If the prop trending is true then it returns the books
+	 * that are trending. 
+	 * 
+	 * @param {Array<Object>} books 
+	 * @returns Array<Object>
+	 */
+	const filterBooks = (books) => {
+		if (categoryId) {
+			return books.filter((book) => book.categoryId == categoryId)
+		} else if (trending) {
+			return books.filter((book) => book.trending)
+		}
+		return books
+	}
+
+	/**
+	 * Sets the variable books according to the available books in  the database
+	 * and the values (trending and categoryId).
+	 */
+	useEffect(()=> {
 		setLoading(true)
-		setTimeout(() => {
-			const books = categoryId ?  data.filter((book) => book.categoryId === categoryId) : trending ? data.filter((book) => book.trending) : data;
-			setBooks(books);
-			setLoading(false);
-		}, 2000)
-  	}, [categoryId, trending]); 
+		const db = getFirestore();
+		const itemsCollection = collection(db, 'books');
+		const booksAvailable = [];
+		getDocs(itemsCollection).then((snapshot) => {
+			snapshot.forEach( (doc) => {
+					const docData = doc.data()
+					const docId = doc.id
+					docData.id = docId
+					booksAvailable.push(docData)
+				}
+			)
+			const filteredBooks = filterBooks(booksAvailable);
+			setBooks(filteredBooks)
+			setLoading(false)
+			setCategoryName("")
+			if (filteredBooks.length > 0) setCategoryName(filteredBooks.at(0).category)
+			}
+		)
+		
+	}, [categoryId, trending])
 
 	if (loading) {
-		console.log('LOADING')
-		return <Loading loading={'Loading books'}/>
+		return <Loader note={'Loading books'}/>
 	}
 	return (
-		<>
+		<Box>
 			{trending && <Notice note={"Welcome to the bookshelf store"}/>}
-			<ItemList books={books} title={trending ? "Trending" : "Catalogue"}/>
-		</>
+			<ItemList books={books} listTitle={categoryId ? categoryName : trending ? "Trending" : "Catalogue"}/>
+		</Box>
   	);
 }
 

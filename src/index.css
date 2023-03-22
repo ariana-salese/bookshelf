@@ -6,7 +6,7 @@
   filter: drop-shadow(2px 2px 10px #a4a4a4);
 }
 
-.catalogue{
+.catalogue {
   display: flex;
   flex-wrap: wrap;
 }
@@ -16,5 +16,5 @@
 }
 
 .size_transition:hover { 
-  transform: scale(1.05); 
+  transform: scale(1.04);
 }

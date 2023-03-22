@@ -8,7 +8,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import '@fontsource/comfortaa/400.css'
 import '@fontsource/comfortaa/700.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Checkout from './components/Checkout'
+import Cart from './components/Cart'
 import { CartProvider } from './context/cartContext'
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
 							<Route exact path="/catalogue" element={<ItemListContainer trending={false}/>}/>
 							<Route exact path="/category/:categoryId" element={<ItemListContainer/>}/>
 							<Route exact path="/item/:itemId/:color/:isDark" element={<ItemDetailContainer/>}/>
-							<Route exact path="/checkout" element={<Checkout/>}/>
+							<Route exact path="/checkout" element={<Cart/>}/>
 						</Routes>
 						<Footer/>
 					</BrowserRouter>
