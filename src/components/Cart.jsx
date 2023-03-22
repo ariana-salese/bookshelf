@@ -1,8 +1,8 @@
 import { AddIcon, DeleteIcon, MinusIcon } from '@chakra-ui/icons';
 import { Box, Button, Card, CardBody, Center, StackDivider, Text, useDisclosure, VStack, Highlight, Flex, Heading, HStack, Image } from '@chakra-ui/react';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { CartProvider } from './context/CartContext'
+import { CartContext } from '../context/CartContext';
 import { ClearCartButton } from './ClearCartButton';
 import ConfirmPurchaseForm from './ConfirmPurchaseForm';
 import Notice from './Notice';

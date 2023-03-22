@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { Button, HStack, Text, Tooltip, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CartProvider } from './context/CartContext'
+import { CartContext } from '../context/CartContext';
 
 /**
  * Multiple buttons to modify count and add that count of the specified book

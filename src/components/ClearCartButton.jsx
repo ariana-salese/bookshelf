@@ -2,7 +2,7 @@ import { DeleteIcon } from '@chakra-ui/icons'
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, useDisclosure } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom';
-import { CartProvider } from './context/CartContext'
+import { CartContext } from '../context/CartContext';
 
 /**
  * Button to clear cart with alert dialog for confirmation
