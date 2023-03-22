@@ -9,7 +9,7 @@ import '@fontsource/comfortaa/400.css'
 import '@fontsource/comfortaa/700.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from './components/Cart'
-import { CartProvider } from './context/cartContext'
+import { CartProvider } from './context/CartContext'
 
 const App = () => {
 	return (
