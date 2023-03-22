@@ -1,6 +1,7 @@
 import { DeleteIcon } from '@chakra-ui/icons'
 import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, useDisclosure } from '@chakra-ui/react'
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/cartContext';
 
 /**
@@ -9,16 +10,9 @@ import { CartContext } from '../context/cartContext';
  * @returns clear cart button
  */
 export const ClearCartButton = () => {
-    const { setBooks } = useContext(CartContext);
+    const { clear } = useContext(CartContext);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = React.useRef()
-
-    /**
-	 * Clears cart (removes all books) and sets count to 0
-	 */
-	const clear = () => {
-		setBooks({});
-	}
   
     return (
         <>
@@ -39,7 +33,9 @@ export const ClearCartButton = () => {
                             {/* Cancel button */}
                             <Button ref={cancelRef} onClick={onClose}>Cancel</Button>
                             {/* Clear cart button */}
-                            <Button className='size_transition' color='white' backgroundColor='#962929' _hover={{ bg: '#962929', color: "white" }} onClick={() => {clear(); onClose}} ml={3}><DeleteIcon></DeleteIcon></Button>
+                            <Link to='/'>
+                                <Button className='size_transition' color='white' backgroundColor='#962929' _hover={{ bg: '#962929', color: "white" }} onClick={() => {clear()}} ml={3}><DeleteIcon></DeleteIcon></Button>
+                            </Link>
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialogOverlay>

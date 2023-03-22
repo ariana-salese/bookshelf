@@ -11,20 +11,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from './components/Cart'
 import { CartProvider } from './context/cartContext'
 
-// ACTUALIZAR READ ME TODO
-// Readme.md: El archivo debe estar en el root del proyecto para dar una breve
-// introducción acerca de su proyecto y qué ideas o enfoque eligió para el
-// mismo. Si incluyó dependencias extra por npm (por fuera de las trabajadas en
-// clase), aparte debe hacer un resumen explicando sus decisiones.
-//
-//-clase con estilo de boton
-//-revisar imports
-//-agregar libros!
-//-ver linter!
-//-unificar css wtf
-//-unificar boxShadow tengo un lio
-//-FUNCIONE DELCADAS IGUAL
-//-carpetas para diferentes componentes?
 const App = () => {
 	return (
 		<div id="app">

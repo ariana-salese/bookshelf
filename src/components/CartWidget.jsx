@@ -10,13 +10,14 @@ import { CartContext } from '../context/cartContext';
  */
 const CartWidget = () => {
     const { bookCount } = useContext(CartContext);
+    const count = bookCount();
 
     return (
-        <Tooltip isDisabled={bookCount() != 0} label="Your cart is empty!" aria-label='A tooltip'>
+        <Tooltip isDisabled={count != 0} label="Your cart is empty!" aria-label='A tooltip'>
             <Link to="/checkout">
-                <Button isDisabled={bookCount() == 0}>
+                <Button isDisabled={count == 0}>
                     <span class="material-symbols-outlined">shopping_cart</span>
-                    <Text>{bookCount()}</Text>
+                    <Text>{count}</Text>
                 </Button>
             </Link>
         </Tooltip> 

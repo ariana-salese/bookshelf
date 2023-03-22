@@ -5,9 +5,36 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/cartContext';
 
+/**
+ * Multiple buttons to modify count and add that count of the specified book
+ * to the cart.
+ * 
+ * @param {Object} book 
+ * @example 
+ * {
+ * 	"id": 2,
+ * 	"name": "Spice road",
+ * 	"author": "Maiya Ibrahim",
+ * 	"price": 3000,
+ * 	"description":
+ * 	"The first book in an epic fantasy [...]",
+ * 	"stock": 10,
+ * 	"category": "Fantasy",
+ * 	"categoryId": "1",
+ * 	"trending": false,
+ * 	"img": img
+ * }
+ * 
+ * @param {string} averageBookCoverColorIsDark
+ * @example 'true', for a dark color
+ * 
+ * @param {string} averageBookCoverColorCode
+ * @example 'e6e6e6', for hex code '#e6e6e6'
+ * 
+ * @returns counter to add to cart
+ */
 const ItemCount = ( { book, averageBookCoverColorCode, averageBookCoverColorIsDark } ) => {
-	console.log('book in item count: ' + book.name + ' id ' + book.id)
-	const { books, setBooks, bookCount } = useContext(CartContext);
+	const { books, updateBooks } = useContext(CartContext);
 	const [count, setCount] = useState(0);
 
 	/**
@@ -30,26 +57,22 @@ const ItemCount = ( { book, averageBookCoverColorCode, averageBookCoverColorIsDa
 	 * }
 	 * 
 	 * @param {number} count
-	 * @param {number} averageBookCoverColorCode
-	 * @param {boolean} averageBookCoverColorIsDark
+	 * @param {string} averageBookCoverColorCode
+	 * @param {string} averageBookCoverColorIsDark
 	 */
-	const addBooks = (data, count, averageBookCoverColorCode, averageBookCoverColorIsDark) => { 
+	const addBooks = (data, averageBookCoverColorCode, averageBookCoverColorIsDark) => { 
 		const bookData = books[data.id] || {data: data, count: 0, averageBookCoverColorCode: averageBookCoverColorCode, averageBookCoverColorIsDark: averageBookCoverColorIsDark}
 		bookData.count = bookData.count + count;
 		books[data.id] = bookData;
 
-		const newBooks = {};
-
-		Object.keys(books).forEach((id) => newBooks[id] = books[id]);
-		
-		setBooks(newBooks);
+		updateBooks(books);
 	}
 
 	return (
 		<VStack>
 			<Tooltip label="Please select amout" isDisabled={count != 0} placement='top'>
 				<Link to="/catalogue">
-					<Button onClick={ () => addBooks(book, count, averageBookCoverColorCode, averageBookCoverColorIsDark)} className="size_transition" boxShadow={'1px 1px 8px gray'} bgColor={"#" + averageBookCoverColorCode} color={averageBookCoverColorIsDark == "true" ? "white" : "black"} _hover={{ bg: "#" + averageBookCoverColorCode }} isDisabled={count == 0} width='9.5rem'>Buy</Button>
+					<Button onClick={ () => addBooks(book, averageBookCoverColorCode, averageBookCoverColorIsDark)} className="size_transition" boxShadow={'1px 1px 8px gray'} bgColor={"#" + averageBookCoverColorCode} color={averageBookCoverColorIsDark == "true" ? "white" : "black"} _hover={{ bg: "#" + averageBookCoverColorCode }} isDisabled={count == 0} width='9.5rem'>Buy</Button>
 				</Link>
 			</Tooltip>
 			<HStack spacing={6}>

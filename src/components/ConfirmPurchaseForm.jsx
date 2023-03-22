@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { collection, getFirestore, addDoc } from 'firebase/firestore'
 import { useState } from 'react';
-import { Button, Center, Flex, FormControl, FormLabel, Input, Box, DrawerFooter, DrawerBody, Textarea, Drawer, DrawerContent, DrawerHeader, DrawerOverlay, Text, Stack, Highlight, Tooltip } from '@chakra-ui/react';
+import { Button, Center, Flex, FormControl, FormLabel, Input, Box, DrawerFooter, DrawerBody, Textarea, Drawer, DrawerContent, DrawerHeader, DrawerOverlay, Text, Tooltip } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/cartContext';
 
@@ -67,7 +67,7 @@ const ConfirmPurchaseForm = ( {isOpen,  onClose} ) => {
      * 
      * @returns {boolean} true if email and repeated email are valid
      */
-    function validateEmail() {
+    const validateEmail = () => {
         var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         return email.match(validRegex) && repeatedEmail == email
     }
@@ -77,7 +77,7 @@ const ConfirmPurchaseForm = ( {isOpen,  onClose} ) => {
      * 
      * @returns {boolean} true if input is valid
      */
-    function validateInput() {
+    const validateInput = () => {
         return email != "" && name != "" && validateEmail(email)
     }
 

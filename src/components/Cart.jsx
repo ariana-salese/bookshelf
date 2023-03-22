@@ -13,19 +13,15 @@ import Notice from './Notice';
  * @returns cart
  */
 const Cart = () => {
-    const { books, setBooks, bookCount } = useContext(CartContext);
+    const { books, updateBooks, bookCount } = useContext(CartContext);
     const bookIds = Object.keys(books);
     const [count, setBookCount] = useState(bookCount());
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     /**
-     * Updates when cart is modified
-     */
-    useEffect(() => {
-  	}, [count]); 
-
-    /**
-	 * TODO
+	 * Returns total price of cart
+     * 
+     * @returns cart price
 	 */
 	const totalPrice = () => {
 		let price = 0;
@@ -48,7 +44,7 @@ const Cart = () => {
 
 		books[id].count = books[id].count - 1;
 		if (books[id].count == 0) delete books[id]
-		setBooks(books);
+        updateBooks(books)
         setBookCount(bookCount());
 	}
 
@@ -60,7 +56,7 @@ const Cart = () => {
 	const deleteBook = (id) => {
 		if (!(id in books)) return
 		delete books[id];
-		setBooks(books);
+		updateBooks(books)
         setBookCount(bookCount());
 	}
 
@@ -72,9 +68,8 @@ const Cart = () => {
 	 */
 	const addBook = (id) => {
 		if (!(id in books)) return 
-
 		books[id].count = books[id].count + 1;
-		setBooks(books);
+        updateBooks(books)
         setBookCount(bookCount());
 	}
 

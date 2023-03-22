@@ -1,8 +1,15 @@
 import React from 'react'
 import bookshelf from '../assets/bookshelf.svg'
-import { Center, Box, Text, Button, Flex } from '@chakra-ui/react'
+import { Box, Text, Button, Flex } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
+/**
+ * Used to notify the note specified. 
+ * 
+ * @param {string} note 
+ * 
+ * @returns notice 
+ */
 const Notice = ({ note }) => {
 	return (
 		<Box h="30.5rem" bgImage={bookshelf}>

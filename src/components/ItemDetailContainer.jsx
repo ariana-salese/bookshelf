@@ -2,16 +2,28 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { Center } from '@chakra-ui/react';
-import Loading from './Loader';
+import Loader from './Loader';
 import {doc, getDoc, getFirestore} from "firebase/firestore"
+import Notice from './Notice';
 
-// SI NO EXISTE EL ID INDICADO MOSTRAR MENSAJE TODO
-const ItemDetailContainer = ( ) => {
+/**
+ * Accesses the database to find the book with the id specified in
+ * the url. If it finds it, it shows all its information with an ItemDetail.
+ * Otherwise, it notifies that the book does not exist with Notice
+ * 
+ * @returns specified book details
+ */
+const ItemDetailContainer = () => {
     const { itemId, color, isDark } = useParams();
-	const [book, setBook] = useState([]);
+	const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    /**
+     * Accesses the database to find the book with the id specified in
+     * the url
+     */
     useEffect(() => {
+        setLoading(true)
         const db = getFirestore();
         const item = doc(db, "books", itemId);
         getDoc(item).then((snapshot) => {
@@ -19,13 +31,16 @@ const ItemDetailContainer = ( ) => {
                 const book = snapshot.data();
 				book.id = itemId
                 setBook(book)
-                console.log(book)
-            }
+            } 
+            setLoading(false)
         })
   	}, []); 
 
 	if (loading) {  
-		return <Loading loading={'Loading book data'}/>
+		return <Loader note={'Loading book data'}/>
+    }
+    if (!book) {
+        return <Notice note="The book you are looking for doesn't exists!"></Notice>
     }
     return (
         <Center>

@@ -4,7 +4,7 @@ import React from 'react'
 import Notice from './Notice'
 
 /**
- * Renders all given books and their data under the specified title
+ * Shows all given books and their data under the specified title
  * 
  * @param {Array<Object>} books 
  * @example
@@ -23,7 +23,8 @@ import Notice from './Notice'
  * }, ...]
  * 
  * @param {string} listTitle
- * @returns Item list of all books
+ * 
+ * @returns book list with its data
  */
 const ItemList = ( { books, listTitle } ) => {
      return (
@@ -35,15 +36,15 @@ const ItemList = ( { books, listTitle } ) => {
             </Center>
             {   
                 books.length == 0 ? 
-                <Notice note='Sorry! There are no books available'/>
+                    <Notice note='Sorry! There are no books available'/>
                 : 
-                <Wrap spacing='2.5rem' justify='center'>
-                    {books.map((book, i) => (
-                        <WrapItem key={i}>
-                            <Item book={book} bookId={book.id}/>
-                        </WrapItem>
-                    ))}  
-                </Wrap>  
+                    <Wrap spacing='2.5rem' justify='center'>
+                        {books.map((book, i) => (
+                            <WrapItem key={i}>
+                                <Item book={book} bookId={book.id}/>
+                            </WrapItem>
+                        ))}  
+                    </Wrap>  
             }
         </div>
     )

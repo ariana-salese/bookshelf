@@ -3,34 +3,16 @@ import { createContext } from "react";
 
 export const CartContext = createContext(null);
 
-{
-	/* TODO
-		- Al clickear comprar en itemDetail se debe guardar en el cartContext el producto
-		y su cantidad en forma de objeto {name price quantity etc} dentro del array de productos
-		- CartContext debe tener la logica de no aceptar duplicados y manteser consistencia
-		RECOMENDADO:
-		- addItem(item, quantity)
-		- removeItem(item, quantity)
-		- clear() sacar todos
-		- isInCart(id/nombre)
-
-		- actualizar carrito
-
-		EXTRA:
-		- actualizar stock
-	*/
-}
-
 /**
- * TODO
- * @param {*} param0 
- * @returns 
+ * Provides cartContext to other components
  */
 export const CartProvider = ({ children }) => {
 	const [books, setBooks] = useState({});
 
 	/**
-	 * TODO
+	 * Returns total count of books in cart
+	 * 
+	 * @returns total count
 	 */
 	const bookCount = () => {
 		let count = 0;
@@ -42,8 +24,27 @@ export const CartProvider = ({ children }) => {
 		return count
 	}	
 
+	/**
+	 * Updates books 
+	 *
+	 * !! This is necessary because otherwise the count of books in cartWidget is not updated
+	 * 
+	 */
+	const updateBooks = (booksToSave) => {
+		const newBooks = {};
+		Object.keys(booksToSave).forEach((id) => newBooks[id] = booksToSave[id]);
+		setBooks(newBooks);
+	}	
+
+	/**
+	 * Clears cart (removes all books) and sets count to 0
+	 */
+	const clear = () => {
+		setBooks({});
+	}
+
 	return (
-		<CartContext.Provider value={{books, setBooks, bookCount}}>
+		<CartContext.Provider value={{books, updateBooks, bookCount, clear}}>
 			{children}
 		</CartContext.Provider>
 	)

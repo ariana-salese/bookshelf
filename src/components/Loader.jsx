@@ -1,7 +1,13 @@
 import { Box, Flex, Spinner, Text } from '@chakra-ui/react'
 import React from 'react'
 
-const Loading = ({ loading }) => {
+/**
+ * Loading spiner and note if provided
+ * 
+ * @param {string} note 
+ * @returns 
+ */
+const Loader = ({ note }) => {
     return (
         <Box height={'70vh'}>
             <Flex direction={'column'} alignItems={'center'} justifyContent='center' height={'70vh'}>
@@ -13,7 +19,7 @@ const Loading = ({ loading }) => {
                     size='xl'
                     m={3}
                 /> 
-                <Text color='white'>{loading}</Text>
+                <Text color='white'>{note}</Text>
             </Flex>
              
         </Box>
@@ -21,4 +27,4 @@ const Loading = ({ loading }) => {
   )
 }
 
-export default Loading
+export default Loader
