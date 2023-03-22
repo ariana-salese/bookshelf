@@ -11,14 +11,10 @@ import {Menu, MenuButton, MenuList, MenuItem, Button, Box, Image, Flex, Spacer} 
  * @returns navbar
  */
 const NavBar = () => {
-	//TODO
-	const categories = [{name: 'bussines !!', id: '3'},  {name: 'cookbooks', id: '8'},
-						{name: 'fantasy !!', id: '1'}, {name: 'fiction !!', id: '2'},
-						{name: 'history', id: '9'}, {name: 'horror', id: '10'},
-						{name: 'mystery', id: '4'}, {name: 'nonfiction', id: '6'},
-						{name: 'romance !!', id: '7'}, {name: 'science fiction', id: '11'},
-						{name: 'self help', id: '12'}, {name: 'sports', id: '13'},
-						{name: 'thriller', id: '5'}]
+	const categories = [{name: 'bussines', id: '3'},  {name: 'cookbooks', id: '8'},
+						{name: 'fantasy', id: '1'}, {name: 'fiction', id: '2'},
+						{name: 'history', id: '9'}, {name: 'mystery', id: '4'}, 
+						{name: 'romance', id: '7'}, {name: 'science fiction', id: '11'}]
 
 	return (
 		<Box p={2}>
