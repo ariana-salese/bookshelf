@@ -14,7 +14,7 @@ const CartWidget = () => {
 
     return (
         <Tooltip isDisabled={count != 0} label="Your cart is empty!" aria-label='A tooltip'>
-            <Link to="/checkout">
+            <Link to={count != 0 && "/checkout"}>
                 <Button isDisabled={count == 0}>
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <Text>{count}</Text>
